@@ -18,6 +18,9 @@ export default function Map() {
         <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={TOKEN}
+        onViewportChange={viewport => {
+            setViewport(viewport)
+        }}
         >
  
         </ReactMapGL>
