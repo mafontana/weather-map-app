@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react'
-import ReactMapGL, {NavigationControl} from 'react-map-gl'
+import ReactMapGL, {NavigationControl, FullscreenControl} from 'react-map-gl'
 
 
 const TOKEN = "pk.eyJ1IjoibWFmb250YW5hIiwiYSI6ImNqcXptcnRucDA0bngzeW94Y3lvNm9hOWQifQ.Da7mHzfQYcdq9eXABgNPQQ"
@@ -8,6 +8,13 @@ const TOKEN = "pk.eyJ1IjoibWFmb250YW5hIiwiYSI6ImNqcXptcnRucDA0bngzeW94Y3lvNm9hOW
 const navStyle = {
     position: 'absolute',
     top: 36,
+    left: 0,
+    padding: '10px'
+  }
+
+  const fullscreenControlStyle = {
+    position: 'absolute',
+    top: 0,
     left: 0,
     padding: '10px'
   }
@@ -46,6 +53,9 @@ class Map extends Component {
       >
         <div className="nav" style={navStyle}>
             <NavigationControl onViewportChange={this._updateViewport} />
+        </div>
+        <div className="fullscreen" style={fullscreenControlStyle}>
+          <FullscreenControl />
         </div>
       </ReactMapGL>
     );
