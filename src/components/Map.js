@@ -1,9 +1,16 @@
 
 import React, {Component} from 'react'
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, {NavigationControl} from 'react-map-gl'
 
 
 const TOKEN = "pk.eyJ1IjoibWFmb250YW5hIiwiYSI6ImNqcXptcnRucDA0bngzeW94Y3lvNm9hOWQifQ.Da7mHzfQYcdq9eXABgNPQQ"
+
+const navStyle = {
+    position: 'absolute',
+    top: 36,
+    left: 0,
+    padding: '10px'
+  }
 
 class Map extends Component {
   constructor(props) {
@@ -21,7 +28,7 @@ class Map extends Component {
   }
 
   _updateViewport = (viewport) => {
-    this.setState({viewport});
+    this.setState({viewport})
   }
 
   render() {
@@ -37,6 +44,9 @@ class Map extends Component {
         mapStyle="mapbox://styles/mafontana/cjuubnuzvhdnz1fmqsgojz8s3"
         onViewportChange={this._updateViewport}
       >
+        <div className="nav" style={navStyle}>
+            <NavigationControl onViewportChange={this._updateViewport} />
+        </div>
       </ReactMapGL>
     );
   }
