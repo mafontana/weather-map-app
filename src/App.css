@@ -1,5 +1,5 @@
 .toolbar {
-    height: 15vh;
+    height: 20vh;
     background-image: linear-gradient(
         to right,
         #0E86FF, rgb(113, 189, 236)
@@ -24,8 +24,8 @@ img.logo {
     align-items: center;
 }
 
-.toolbarNavigationItems a:hover,
-.toolbarNavigationItems a:active {
+.toolbarNavigationItems button:hover,
+.toolbarNavigationItems button:active {
     color: #f2af58;
 }
 
@@ -48,4 +48,17 @@ img.logo {
 .map {
     width: 100%;
     height: 100%;
+    margin-top: 20vh;
 }
+
+.extendedToolbarWeather {
+    height: 19vh;
+    background: grey;
+    box-shadow: 2px 0px 5px black;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 62%;
+    font-size: 0.5em;
+}
+

@@ -42,7 +42,7 @@ class Map extends Component {
       currentLng: 0,
       cityName: "",
       country: ""
-    };
+    }
   }
 
   componentDidMount() {
@@ -97,9 +97,7 @@ class Map extends Component {
 
     return (
         <div>
-        <p>latitude:{this.state.clickedLatitude}</p>
-        <p>longitude: {this.state.clickedLongitude}</p>
-        <p>temperature: {this.state.currentTemp} degrees Farenheit</p>
+ 
         <div className="map">
           <ReactMapGL
           {...viewport}
@@ -122,10 +120,12 @@ class Map extends Component {
               <Popup 
               longitude={this.state.clickedLongitude}
               latitude={this.state.clickedLatitude}
-              tipSize={40} 
+              tipSize={20}
+              width={50}
               closeButton={false}
               dynamicPosition={true}>
-              {this.state.currentTemp}<p>degrees Farenheit</p>
+              <p>Temperature: {this.state.currentTemp} &deg;F</p>
+              <p>Current Weather: {this.state.currentWeather}</p>
               </Popup>
         </ReactMapGL>
       </div>
