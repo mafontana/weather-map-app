@@ -1,19 +1,26 @@
 import React, {Component} from 'react'
 import ExtendedToolbarWeather from './ExtendedToolbarWeather';
+import ExtendedToolbarForecast from './ExtendedToolbarForecast';
 
 class Toolbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        extendedToolbarOpen: false
+        extendedToolbarWeatherOpen: false,
+        extendedToolbarForecastOpen: false
     }
   }
 
-  toggleExtendedToolbar = () => {
+  toggleExtendedWeatherToolbar = () => {
     this.setState((prevState) => {
-      return {extendedToolbarOpen: !prevState.extendedToolbarOpen}
+      return {extendedToolbarWeatherOpen: !prevState.extendedToolbarWeatherOpen}
     })
-    
+  }
+
+  toggleExtendedForecastToolbar = () => {
+    this.setState((prevState) => {
+      return {extendedToolbarForecastOpen: !prevState.extendedToolbarForecastOpen}
+    })
   }
 
   render() {
@@ -27,14 +34,14 @@ class Toolbar extends Component {
             <h1>World Weather App</h1>
             <div className="toolbarNavigationItems">
                     <ul>
-                        <li><button onClick={this.toggleExtendedToolbar}>Today's Weather Details</button></li>
-                        <li><button>5 day Forecast</button></li>
+                        <li><button onClick={this.toggleExtendedWeatherToolbar}>Today's Weather Details</button></li>
+                        <li><button onClick={this.toggleExtendedForecastToolbar}>5 day Forecast</button></li>
                     </ul>
             </div>
         </nav>
       
         <ExtendedToolbarWeather 
-            show={this.state.extendedToolbarOpen}
+            show={this.state.extendedToolbarWeatherOpen}
             cityName={this.props.cityName} 
             currentTemp={this.props.currentTemp}
             minTemp={this.props.minTemp}
@@ -42,10 +49,10 @@ class Toolbar extends Component {
             currentWeather={this.props.currentWeather}
             currentWindSpeed={this.props.currentWindSpeed}
             currentHumidity={this.props.currentHumidity}
-        
-        
-        
         />
+        <ExtendedToolbarForecast
+            show={this.state.extendedToolbarForecastOpen}/>
+        
         </header>
       </div>
     );
