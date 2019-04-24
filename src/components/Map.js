@@ -1,6 +1,8 @@
 
 import React, {Component} from 'react'
 import ReactMapGL, {NavigationControl, GeolocateControl, Popup} from 'react-map-gl'
+import ExtendedToolbarWeather from './ExtendedToolbarWeather';
+import Toolbar from './Toolbar';
 
 
 const TOKEN = "pk.eyJ1IjoibWFmb250YW5hIiwiYSI6ImNqcXptcnRucDA0bngzeW94Y3lvNm9hOWQifQ.Da7mHzfQYcdq9eXABgNPQQ"
@@ -41,7 +43,8 @@ class Map extends Component {
       currentLat: 0,
       currentLng: 0,
       cityName: "",
-      country: ""
+      country: "",
+      
     }
   }
 
@@ -91,13 +94,30 @@ class Map extends Component {
 
   }
 
+  toggleExtendedToolbar = () => {
+    this.setState((prevState) => {
+      return {extendedToolbarOpen: !prevState.extendedToolbarOpen}
+    })
+  }
+
   render() {
 
     const {viewport} = this.state
 
     return (
         <div>
- 
+        <Toolbar 
+          cityName={this.state.cityName} 
+          currentTemp={this.state.currentTemp}
+          minTemp={this.state.minTemp}
+          maxTemp={this.state.maxTemp}
+          currentWindSpeed={this.state.currentWindSpeed}
+          currentHumidity={this.state.currentHumidity}
+          
+          
+          
+          
+          />
         <div className="map">
           <ReactMapGL
           {...viewport}

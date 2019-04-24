@@ -5,8 +5,15 @@ class Toolbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       
+        extendedToolbarOpen: false
     }
+  }
+
+  toggleExtendedToolbar = () => {
+    this.setState((prevState) => {
+      return {extendedToolbarOpen: !prevState.extendedToolbarOpen}
+    })
+    
   }
 
   render() {
@@ -20,13 +27,22 @@ class Toolbar extends Component {
             <h1>World Weather App</h1>
             <div className="toolbarNavigationItems">
                     <ul>
-                        <li><button onClick={this.props.toggleExtendedToolbar}>Today's Weather</button></li>
+                        <li><button onClick={this.toggleExtendedToolbar}>Today's Weather Details</button></li>
                         <li><button>5 day Forecast</button></li>
                     </ul>
             </div>
         </nav>
       
-    
+        <ExtendedToolbarWeather 
+            show={this.state.extendedToolbarOpen}
+            cityName={this.props.cityName} 
+            currentTemp={this.props.currentTemp}
+            minTemp={this.props.minTemp}
+            maxTemp={this.props.maxTemp}
+        
+        
+        
+        />
         </header>
       </div>
     );
