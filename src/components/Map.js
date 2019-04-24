@@ -29,8 +29,9 @@ class Map extends Component {
             zoom: 10,
             bearing: 0,
             pitch: 0
-          }
-      
+          },
+      clickedLatitude: 0,
+      clickedLongitude: 0
     };
   }
 
@@ -38,11 +39,23 @@ class Map extends Component {
     this.setState({viewport})
   }
 
+  handleMapClick = (e) => {
+    var newLatLng = e.lngLat
+    console.log(e.lngLat);
+    this.setState({
+        clickedLongitude: newLatLng[0],
+        clickedLatitude: newLatLng[1]
+    })
+  }
+
   render() {
 
     const {viewport} = this.state
 
     return (
+        <div>
+        <p>latitude:{this.state.clickedLatitude}</p>
+        <p>longitude: {this.state.clickedLongitude}</p>
         <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={TOKEN}
@@ -50,14 +63,16 @@ class Map extends Component {
         height="100vh"
         mapStyle="mapbox://styles/mafontana/cjuubnuzvhdnz1fmqsgojz8s3"
         onViewportChange={this._updateViewport}
-      >
-        <div className="nav" style={navStyle}>
-            <NavigationControl onViewportChange={this._updateViewport} />
-        </div>
-        <div className="fullscreen" style={fullscreenControlStyle}>
-          <FullscreenControl />
-        </div>
+        onClick={this.handleMapClick}
+        >
+            <div className="nav" style={navStyle}>
+                <NavigationControl onViewportChange={this._updateViewport} />
+            </div>
+            <div className="fullscreen" style={fullscreenControlStyle}>
+                <FullscreenControl />
+            </div>
       </ReactMapGL>
+      </div>
     );
   }
 }
