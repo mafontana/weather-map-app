@@ -31,9 +31,16 @@ class Map extends Component {
             pitch: 0
           },
       clickedLatitude: 0,
-      clickedLongitude: 0
+      clickedLongitude: 0,
+      weatherData: []
     };
   }
+
+  async componentDidMount() {
+    const weatherApiCall = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.clickedLatitude}&lon=${this.state.clickedLatitude}&APPID=4b7f4d52b065c583304a7bf33bc7a01d&units=imperial`)
+    const json = await weatherApiCall.json()
+    console.log("weather data", json);
+  } 
 
   _updateViewport = (viewport) => {
     this.setState({viewport})
@@ -56,6 +63,7 @@ class Map extends Component {
         <div>
         <p>latitude:{this.state.clickedLatitude}</p>
         <p>longitude: {this.state.clickedLongitude}</p>
+        <p>weather data: {this.state.weatherData}</p>
         <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={TOKEN}
