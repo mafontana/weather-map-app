@@ -125,8 +125,10 @@ class Map extends Component {
           <Popup 
           longitude={this.state.clickedLongitude}
           latitude={this.state.clickedLatitude}
-          tipSize={40} >
-          this is a popup
+          tipSize={40} 
+          closeButton={false}
+          dynamicPosition={true}>
+          {this.state.weatherData} degrees Farenheit
         </Popup>
 
       </ReactMapGL>
