@@ -45,10 +45,7 @@ class Map extends Component {
     };
   }
 
-
-
   componentDidMount() {
-  
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((pos) => {
                 const coords = pos.coords;
@@ -58,7 +55,6 @@ class Map extends Component {
                 })
             })
         }
-    
   }
 
   
@@ -93,19 +89,6 @@ class Map extends Component {
     console.log(this.state.currentTemp)
     this.getWeather()
 
-
-    // const popupInfo = this.state.popupInfo
-
-    // return popupInfo && (
-    //   <Popup tipSize={5}
-    //     anchor="top"
-    //     longitude={this.state.clickedLongitude}
-    //     latitude={this.state.clickedLongitude}
-    //     closeOnClick={false}
-    //     onClose={() => this.setState({popupInfo: null})} >
-    //     <CityInfo info={popupInfo} />
-    //   </Popup>
-    // );
   }
 
   render() {
@@ -135,16 +118,14 @@ class Map extends Component {
             positionOptions={{enableHighAccuracy: true}}
             trackUserLocation={true}
           /> 
-          
-          <Popup 
-          longitude={this.state.clickedLongitude}
-          latitude={this.state.clickedLatitude}
-          tipSize={40} 
-          closeButton={false}
-          dynamicPosition={true}>
-          {this.state.currentTemp}<p>degrees Farenheit</p>
-        </Popup>
-
+            <Popup 
+            longitude={this.state.clickedLongitude}
+            latitude={this.state.clickedLatitude}
+            tipSize={40} 
+            closeButton={false}
+            dynamicPosition={true}>
+            {this.state.currentTemp}<p>degrees Farenheit</p>
+            </Popup>
       </ReactMapGL>
       </div>
     );
