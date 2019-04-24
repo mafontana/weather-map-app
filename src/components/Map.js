@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react'
-import ReactMapGL, {NavigationControl, GeolocateControl, Marker, Popup} from 'react-map-gl'
+import ReactMapGL, {NavigationControl, GeolocateControl, Popup} from 'react-map-gl'
 
 
 const TOKEN = "pk.eyJ1IjoibWFmb250YW5hIiwiYSI6ImNqcXptcnRucDA0bngzeW94Y3lvNm9hOWQifQ.Da7mHzfQYcdq9eXABgNPQQ"
@@ -32,9 +32,16 @@ class Map extends Component {
           },
       clickedLatitude: 0,
       clickedLongitude: 0,
-      weatherData: 0,
+      currentTemp: 0,
+      minTemp: 0,
+      maxTemp: 0,
+      currentWeather: "",
+      currentWindSpeed:0,
+      currentHumidity: 0,
       currentLat: 0,
-      currentLng: 0
+      currentLng: 0,
+      cityName: "",
+      country: ""
     };
   }
 
@@ -59,7 +66,14 @@ class Map extends Component {
     const weatherApiCall = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.clickedLatitude}&lon=${this.state.clickedLongitude}&APPID=4b7f4d52b065c583304a7bf33bc7a01d&units=imperial`)
     const json = await weatherApiCall.json()
     this.setState({
-        weatherData: json.main.temp
+        currentTemp: json.main.temp,
+        minTemp: json.main.temp_min,
+        maxTemp: json.main.temp_max,
+        currentWeather: json.weather[0].description,
+        currentWindSpeed: json.wind.speed,
+        currentHumidity: json.main.humidity,
+        cityName: json.name,
+        country: json.sys.country
     })
     console.log("weather data", json);
   } 
@@ -76,7 +90,7 @@ class Map extends Component {
         clickedLatitude: newLatLng[1]
     })
 
-    console.log(this.state.weatherData)
+    console.log(this.state.currentTemp)
     this.getWeather()
 
 
@@ -102,7 +116,7 @@ class Map extends Component {
         <div>
         <p>latitude:{this.state.clickedLatitude}</p>
         <p>longitude: {this.state.clickedLongitude}</p>
-        <p>temperature: {this.state.weatherData} degrees Farenheit</p>
+        <p>temperature: {this.state.currentTemp} degrees Farenheit</p>
         <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={TOKEN}
@@ -128,7 +142,7 @@ class Map extends Component {
           tipSize={40} 
           closeButton={false}
           dynamicPosition={true}>
-          {this.state.weatherData} degrees Farenheit
+          {this.state.currentTemp}<p>degrees Farenheit</p>
         </Popup>
 
       </ReactMapGL>
