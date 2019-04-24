@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react'
-import ReactMapGL, {NavigationControl, FullscreenControl, GeolocateControl} from 'react-map-gl'
+import ReactMapGL, {NavigationControl, GeolocateControl, Marker, Popup} from 'react-map-gl'
 
 
 const TOKEN = "pk.eyJ1IjoibWFmb250YW5hIiwiYSI6ImNqcXptcnRucDA0bngzeW94Y3lvNm9hOWQifQ.Da7mHzfQYcdq9eXABgNPQQ"
@@ -78,6 +78,20 @@ class Map extends Component {
 
     console.log(this.state.weatherData)
     this.getWeather()
+
+
+    // const popupInfo = this.state.popupInfo
+
+    // return popupInfo && (
+    //   <Popup tipSize={5}
+    //     anchor="top"
+    //     longitude={this.state.clickedLongitude}
+    //     latitude={this.state.clickedLongitude}
+    //     closeOnClick={false}
+    //     onClose={() => this.setState({popupInfo: null})} >
+    //     <CityInfo info={popupInfo} />
+    //   </Popup>
+    // );
   }
 
   render() {
@@ -106,7 +120,15 @@ class Map extends Component {
             onViewportChange={this._onViewportChange}
             positionOptions={{enableHighAccuracy: true}}
             trackUserLocation={true}
-          />      
+          /> 
+          
+          <Popup 
+          longitude={this.state.clickedLongitude}
+          latitude={this.state.clickedLatitude}
+          tipSize={40} >
+          this is a popup
+        </Popup>
+
       </ReactMapGL>
       </div>
     );
