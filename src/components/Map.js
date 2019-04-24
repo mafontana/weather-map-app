@@ -108,15 +108,13 @@ class Map extends Component {
         <div>
         <Toolbar 
           cityName={this.state.cityName} 
+          currentWeather={this.state.currentWeather}
           currentTemp={this.state.currentTemp}
           minTemp={this.state.minTemp}
           maxTemp={this.state.maxTemp}
           currentWindSpeed={this.state.currentWindSpeed}
           currentHumidity={this.state.currentHumidity}
-          
-          
-          
-          
+         
           />
         <div className="map">
           <ReactMapGL

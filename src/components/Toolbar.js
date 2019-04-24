@@ -39,6 +39,9 @@ class Toolbar extends Component {
             currentTemp={this.props.currentTemp}
             minTemp={this.props.minTemp}
             maxTemp={this.props.maxTemp}
+            currentWeather={this.props.currentWeather}
+            currentWindSpeed={this.props.currentWindSpeed}
+            currentHumidity={this.props.currentHumidity}
         
         
         
