@@ -26,7 +26,7 @@ class Map extends Component {
         viewport: {
             latitude: 39.742043,
             longitude: -104.991531,
-            zoom: 10,
+            zoom: 3,
             bearing: 0,
             pitch: 0
           },
@@ -100,33 +100,35 @@ class Map extends Component {
         <p>latitude:{this.state.clickedLatitude}</p>
         <p>longitude: {this.state.clickedLongitude}</p>
         <p>temperature: {this.state.currentTemp} degrees Farenheit</p>
-        <ReactMapGL
-        {...viewport}
-        mapboxApiAccessToken={TOKEN}
-        width="100vw"
-        height="100vh"
-        mapStyle="mapbox://styles/mafontana/cjuubnuzvhdnz1fmqsgojz8s3"
-        onViewportChange={this.updateViewport}
-        onClick={this.handleMapClick}
-        >
-            <div className="nav" style={navStyle}>
-                <NavigationControl onViewportChange={this.updateViewport} />
-            </div>
-            <GeolocateControl
-            style={geolocateStyle}
-            onViewportChange={this._onViewportChange}
-            positionOptions={{enableHighAccuracy: true}}
-            trackUserLocation={true}
-          /> 
-            <Popup 
-            longitude={this.state.clickedLongitude}
-            latitude={this.state.clickedLatitude}
-            tipSize={40} 
-            closeButton={false}
-            dynamicPosition={true}>
-            {this.state.currentTemp}<p>degrees Farenheit</p>
-            </Popup>
-      </ReactMapGL>
+        <div className="map">
+          <ReactMapGL
+          {...viewport}
+          mapboxApiAccessToken={TOKEN}
+          width="100vw"
+          height="100vh"
+          mapStyle="mapbox://styles/mafontana/cjuubnuzvhdnz1fmqsgojz8s3"
+          onViewportChange={this.updateViewport}
+          onClick={this.handleMapClick}
+          >
+              <div className="nav" style={navStyle}>
+                  <NavigationControl onViewportChange={this.updateViewport} />
+              </div>
+              <GeolocateControl
+              style={geolocateStyle}
+              onViewportChange={this._onViewportChange}
+              positionOptions={{enableHighAccuracy: true}}
+              trackUserLocation={true}
+            /> 
+              <Popup 
+              longitude={this.state.clickedLongitude}
+              latitude={this.state.clickedLatitude}
+              tipSize={40} 
+              closeButton={false}
+              dynamicPosition={true}>
+              {this.state.currentTemp}<p>degrees Farenheit</p>
+              </Popup>
+        </ReactMapGL>
+      </div>
       </div>
     );
   }
