@@ -1,5 +1,9 @@
+body {
+    font-family: 'Righteous';
+}
+
 .toolbar {
-    height: 25vh;
+    height: 20vh;
     background-image: linear-gradient(
         to right,
         #0E86FF, rgb(113, 189, 236)
@@ -10,7 +14,7 @@ img.logo {
     height: 6rem;
 }
 
-.toolbarNavigation {
+.toolbarHeader {
     display: flex;
     align-items: center;
     height: 100%;
@@ -20,32 +24,26 @@ img.logo {
     box-shadow: 1em
 }
 
-.toolbarNavigationItems {
-    display: flex;
-    align-items: center;
+
+.toolbarText p {
+    padding: 0;
+    margin-top: 0;
+    margin-left: 1rem;
 }
 
-.toolbarNavigationItems ul {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding-left: 6rem;
-    font: #0E86FF;
+.toolbarText h1 {
+    margin-bottom: 0;
 }
 
-.toolbarNavigationItems li {
-    padding: 1rem
-}
-
-.toolbarLinks {
-    padding-left: 10rem;
+.toolbarItem {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .map {
     width: 100%;
     height: 100%;
-    /* margin-top: 20vh; */
 }
 
 .extendedToolbarWeather {
@@ -56,7 +54,6 @@ img.logo {
     top: 0;
     right: 0;
     width: 50%;
-    font-size: 0.5em;
 }
 
 
@@ -64,14 +61,14 @@ img.logo {
     transform:translateX(0);
     transition: transform 0.4s ease-out;
     height: 25vh;
-    background: grey;
     /* opacity: 0.3; */
     box-shadow: 2px 0px 5px black;
     position: fixed;
     top: 0;
     right: 0;
-    width: 50%;
-    font-size: 0.8em;
+    width: 75%;
+    font-size: 1rem;
+    padding-left: 2rem;
 }
 
 .closed {
@@ -89,9 +86,9 @@ button {
     font-size: 1rem;
     height: 3rem;
     border-radius: 4px;
+    transition: 0.5s;
 }
 
-.toolbarNavigationItems button:hover,
-.toolbarNavigationItems button:active {
-    color: #f2af58;
+button:hover {
+    background-color: #A4C9DF;
 }

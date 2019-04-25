@@ -44,7 +44,7 @@ class Map extends Component {
       currentLng: 0,
       cityName: "",
       country: "",
-      
+      extendedToolbarOpen: false
     }
   }
 
@@ -60,7 +60,6 @@ class Map extends Component {
         }
   }
 
-  
  getWeather = async () => {
     const weatherApiCall = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.clickedLatitude}&lon=${this.state.clickedLongitude}&APPID=4b7f4d52b065c583304a7bf33bc7a01d&units=imperial`)
     const json = await weatherApiCall.json()
@@ -77,6 +76,8 @@ class Map extends Component {
     console.log("weather data", json);
   } 
 
+
+
   updateViewport = (viewport) => {
     this.setState({viewport})
   }
@@ -90,8 +91,8 @@ class Map extends Component {
     })
 
     console.log(this.state.currentTemp)
+    console.log(this.state.currentCity)
     this.getWeather()
-
   }
 
   toggleExtendedToolbar = () => {
@@ -101,9 +102,10 @@ class Map extends Component {
   }
 
   render() {
-
     const {viewport} = this.state
 
+    let buttonText = this.state.extendedToolbarOpen ? "Close Weather details" : "See weather details"
+    
     return (
         <div>
         <Toolbar 
@@ -114,7 +116,7 @@ class Map extends Component {
           maxTemp={this.state.maxTemp}
           currentWindSpeed={this.state.currentWindSpeed}
           currentHumidity={this.state.currentHumidity}
-         
+          showToolbar={this.state.extendedToolbarOpen}
           />
         <div className="map">
           <ReactMapGL
@@ -144,11 +146,12 @@ class Map extends Component {
               dynamicPosition={true}>
               <p>Temperature: {this.state.currentTemp} &deg;F</p>
               <p>Current Weather: {this.state.currentWeather}</p>
+              <button onClick={this.toggleExtendedToolbar}>{buttonText}</button>
               </Popup>
         </ReactMapGL>
       </div>
       </div>
-    );
+    )
   }
 }
 
