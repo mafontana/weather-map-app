@@ -1,0 +1,47 @@
+.toolbarData {
+    display: flex;
+    justify-content: space-around;
+}
+
+.toolbarItem {
+    border-right: 4px solid #F2AF58;
+    padding-right: .5vw;
+    padding-left: .5vw;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toolbarItem p {
+    font-size: 1vw;
+    margin-top: 0;
+    color: #E7F1F7;
+}
+
+.toolbarItem h2 {
+    font-size: 1.2vw;
+}
+
+.openExtendedToolbar {
+    transform:translateX(0);
+    transition: transform 0.4s ease-out;
+    height: 18vh;
+    box-shadow: 2px 0px 5px black;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 75%;
+    font-size: 1rem;
+    padding-left: 2rem;
+}
+
+.openExtendedToolbar h1 {
+    color: #E7F1F7;
+}
+
+.closedExtendedToolbar {
+    color: blue;
+    transform: translateX(100%)
+}

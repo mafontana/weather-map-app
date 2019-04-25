@@ -1,0 +1,34 @@
+.toolbar {
+    height: 18vh;
+    background-image: linear-gradient(
+        to right,
+        #0E86FF, rgb(113, 189, 236)
+    )
+}
+
+.toolbarHeader {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: #E7F1F7;
+    font-size: 1.7vh;
+    width: 100%;
+    box-shadow: 1em
+}
+
+img.logo {
+    height: 8vh;
+}
+
+.toolbarText p {
+    padding: 0;
+    margin-top: 0;
+    margin-left: 1rem;
+    margin-bottom: 0;
+    font-size: 1.7vh;
+}
+
+.toolbarText h1 {
+    margin-bottom: 0;
+    font-size: 3vh;
+}

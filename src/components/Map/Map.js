@@ -1,7 +1,7 @@
-
 import React, {Component} from 'react'
 import ReactMapGL, {NavigationControl, GeolocateControl, Popup} from 'react-map-gl'
-import Toolbar from './Toolbar';
+import Toolbar from '../Toolbar/Toolbar';
+import './Map.css'
 
 const TOKEN = "pk.eyJ1IjoibWFmb250YW5hIiwiYSI6ImNqcXptcnRucDA0bngzeW94Y3lvNm9hOWQifQ.Da7mHzfQYcdq9eXABgNPQQ"
 
@@ -20,6 +20,7 @@ const navStyle = {
   }
 
 class Map extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -71,7 +72,6 @@ class Map extends Component {
         cityName: json.name,
         country: json.sys.country
     })
-    console.log("weather data", json);
   } 
 
   updateViewport = (viewport) => {
@@ -94,6 +94,7 @@ class Map extends Component {
   }
 
   render() {
+
     const {viewport} = this.state
 
     let popupButtonText = this.state.extendedToolbarOpen ? "Close Weather details" : "See weather details"
@@ -102,52 +103,54 @@ class Map extends Component {
     
     return (
         <div>
-        <Toolbar 
-          cityName={this.state.cityName} 
-          currentWeather={this.state.currentWeather}
-          currentTemp={this.state.currentTemp}
-          minTemp={this.state.minTemp}
-          maxTemp={this.state.maxTemp}
-          currentWindSpeed={this.state.currentWindSpeed}
-          currentHumidity={this.state.currentHumidity}
-          showToolbar={this.state.extendedToolbarOpen}
-          />
-        <div className="map">
-          <ReactMapGL
-            {...viewport}
-            mapboxApiAccessToken={TOKEN}
-            width="100vw"
-            height="100vh"
-            mapStyle="mapbox://styles/mafontana/cjuubnuzvhdnz1fmqsgojz8s3"
-            onViewportChange={this.updateViewport}
-            onClick={this.handleMapClick}
-          >
-              <div className="nav" style={navStyle}>
-                  <NavigationControl onViewportChange={this.updateViewport} />
-              </div>
-              <GeolocateControl
-                style={geolocateStyle}
-                onViewportChange={this.onViewportChange}
-                positionOptions={{enableHighAccuracy: true}}
-                trackUserLocation={true}
-            /> 
+          <Toolbar 
+            cityName={this.state.cityName} 
+            currentWeather={this.state.currentWeather}
+            currentTemp={this.state.currentTemp}
+            minTemp={this.state.minTemp}
+            maxTemp={this.state.maxTemp}
+            currentWindSpeed={this.state.currentWindSpeed}
+            currentHumidity={this.state.currentHumidity}
+            showToolbar={this.state.extendedToolbarOpen}
+            />
 
-              <Popup 
-                longitude={this.state.clickedLongitude}
-                latitude={this.state.clickedLatitude}
-                tipSize={20}
-                width={50}
-                closeButton={true}
-                dynamicPosition={true}
-                 >
-                <p>City: {cityName}</p>
-                <p>Temperature: {this.state.currentTemp} &deg;F</p>
-                <p>Current Weather: {this.state.currentWeather}</p>
-                <button className="seeWeatherButton" onClick={this.toggleExtendedToolbar}>{popupButtonText}</button>
+          <div className="map">
+            <ReactMapGL
+              {...viewport}
+              mapboxApiAccessToken={TOKEN}
+              width="100vw"
+              height="100vh"
+              mapStyle="mapbox://styles/mafontana/cjuubnuzvhdnz1fmqsgojz8s3"
+              onViewportChange={this.updateViewport}
+              onClick={this.handleMapClick}
+            >
+
+                <div className="nav" style={navStyle}>
+                    <NavigationControl onViewportChange={this.updateViewport} />
+                </div>
+                
+                <GeolocateControl
+                  style={geolocateStyle}
+                  onViewportChange={this.onViewportChange}
+                  positionOptions={{enableHighAccuracy: true}}
+                  trackUserLocation={true}
+                /> 
+
+                <Popup 
+                  longitude={this.state.clickedLongitude}
+                  latitude={this.state.clickedLatitude}
+                  tipSize={20}
+                  width={50}
+                  dynamicPosition={true}
+                  >
+                  <p>City: {cityName}</p>
+                  <p>Temperature: {this.state.currentTemp} &deg;F</p>
+                  <p>Current Weather: {this.state.currentWeather}</p>
+                  <button className="seeWeatherButton" onClick={this.toggleExtendedToolbar}>{popupButtonText}</button>
                 </Popup>
 
-        </ReactMapGL>
-      </div>
+          </ReactMapGL>
+        </div>
       </div>
     )
   }
