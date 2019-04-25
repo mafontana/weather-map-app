@@ -146,7 +146,7 @@ class Map extends Component {
               dynamicPosition={true}>
               <p>Temperature: {this.state.currentTemp} &deg;F</p>
               <p>Current Weather: {this.state.currentWeather}</p>
-              <button onClick={this.toggleExtendedToolbar}>{buttonText}</button>
+              <button className="seeWeatherButton" onClick={this.toggleExtendedToolbar}>{buttonText}</button>
               </Popup>
         </ReactMapGL>
       </div>

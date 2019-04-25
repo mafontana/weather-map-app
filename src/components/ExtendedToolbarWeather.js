@@ -37,13 +37,7 @@ return (
             <div className="toolbarItem">
                 <h2>Current Humidity:</h2>
                 <p>{props.currentHumidity}%</p>
-            </div>
-            
-            
-            
-            
-            
-            
+            </div>  
        </div>
     </div>
     )

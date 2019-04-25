@@ -3,7 +3,7 @@ body {
 }
 
 .toolbar {
-    height: 20vh;
+    height: 18vh;
     background-image: linear-gradient(
         to right,
         #0E86FF, rgb(113, 189, 236)
@@ -11,7 +11,7 @@ body {
 }
 
 img.logo {
-    height: 6rem;
+    height: 8vh;
 }
 
 .toolbarHeader {
@@ -30,10 +30,12 @@ img.logo {
     margin-top: 0;
     margin-left: 1rem;
     margin-bottom: 0;
+    font-size: 1.7vh;
 }
 
 .toolbarText h1 {
     margin-bottom: 0;
+    font-size: 3vh;
 }
 
 
@@ -44,26 +46,25 @@ img.logo {
 
 .toolbarItem {
     border-right: 4px solid #F2AF58;
-    padding-right: 2rem;
+    padding-right: .5vw;
+    padding-left: .5vw;
     padding-bottom: 0;
     margin-bottom: 0;
+    /* height: 8vh; */
     display:flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* .toolbarItem h2 {
-    margin: 0;
-    padding:0;
-} */
-
 .toolbarItem p {
-    font-size: 1.4rem;
+    font-size: 1vw;
     margin-top: 0;
     color: #E7F1F7;
 }
 
-
+.toolbarItem h2 {
+    font-size: 1.2vw;
+}
 
 .map {
     width: 100%;
@@ -84,8 +85,7 @@ img.logo {
 .open {
     transform:translateX(0);
     transition: transform 0.4s ease-out;
-    height: 25vh;
-    /* opacity: 0.3; */
+    height: 18vh;
     box-shadow: 2px 0px 5px black;
     position: fixed;
     top: 0;
@@ -93,6 +93,10 @@ img.logo {
     width: 75%;
     font-size: 1rem;
     padding-left: 2rem;
+}
+
+.open h1 {
+    color: #E7F1F7;
 }
 
 .closed {
@@ -110,4 +114,13 @@ button {
 
 button:hover {
     background-color: #A4C9DF;
+}
+
+@media(max-width: 1500px){
+    .open {
+      display: none;  
+    }
+    .seeWeatherButton {
+        display:none;
+    }
 }
