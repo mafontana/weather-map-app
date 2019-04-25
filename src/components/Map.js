@@ -42,7 +42,7 @@ class Map extends Component {
       currentLng: 0,
       cityName: "",
       country: "",
-      extendedToolbarOpen: false
+      extendedToolbarOpen: false,
     }
   }
 
@@ -137,8 +137,9 @@ class Map extends Component {
                 latitude={this.state.clickedLatitude}
                 tipSize={20}
                 width={50}
-                closeButton={false}
-                dynamicPosition={true}>
+                closeButton={true}
+                dynamicPosition={true}
+                 >
                 <p>City: {cityName}</p>
                 <p>Temperature: {this.state.currentTemp} &deg;F</p>
                 <p>Current Weather: {this.state.currentWeather}</p>
