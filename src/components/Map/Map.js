@@ -125,24 +125,24 @@ class Map extends Component {
               onClick={this.handleMapClick}
             >
 
-                <div className="nav" style={navStyle}>
-                    <NavigationControl onViewportChange={this.updateViewport} />
-                </div>
-                
-                <GeolocateControl
-                  style={geolocateStyle}
-                  onViewportChange={this.onViewportChange}
-                  positionOptions={{enableHighAccuracy: true}}
-                  trackUserLocation={true}
-                /> 
+              <div className="nav" style={navStyle}>
+                <NavigationControl onViewportChange={this.updateViewport} />
+              </div>
+        
+              <GeolocateControl
+                style={geolocateStyle}
+                onViewportChange={this.onViewportChange}
+                positionOptions={{enableHighAccuracy: true}}
+                trackUserLocation={true}
+              /> 
 
-                <Popup 
-                  longitude={this.state.clickedLongitude}
-                  latitude={this.state.clickedLatitude}
-                  tipSize={20}
-                  width={50}
-                  dynamicPosition={true}
-                  >
+              <Popup 
+                longitude={this.state.clickedLongitude}
+                latitude={this.state.clickedLatitude}
+                tipSize={20}
+                width={50}
+                dynamicPosition={true}
+                >
                   <p>City: {cityName}</p>
                   <p>Temperature: {this.state.currentTemp} &deg;F</p>
                   <p>Current Weather: {this.state.currentWeather}</p>
