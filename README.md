@@ -2,6 +2,12 @@
 
 ## World Weather App allows the user to click on a map of the world to show the clicked location's current weather data.
 
+## Deployed Link 
+Vew deployed site [here](https://world-weather-webapp.herokuapp.com/)
+
+## App Demo
+View demo on YouTube [here](https://youtu.be/ubWkpjSDtcM)
+
 ## Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -26,15 +32,15 @@ npm start
 
 npm test
 
-    Launches the test runner in the interactive watch mode.<br>
+    Launches the test runner in the interactive watch mode.
     See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 npm run build
 
-    Builds the app for production to the `build` folder.<br>
+    Builds the app for production to the `build` folder.
     It correctly bundles React in production mode and optimizes the build for the best performance.
 
-    The build is minified and the filenames include the hashes.<br>
+    The build is minified and the filenames include the hashes.
     Your app is ready to be deployed!
 
     See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
@@ -56,9 +62,6 @@ npm run eject
     To learn React, check out the [React documentation](https://reactjs.org/).
 ```
 
-
-## App Demo
-View demo on YouTube [here](https://youtu.be/ubWkpjSDtcM)
 
 
 ## Technologies Used
