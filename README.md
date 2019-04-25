@@ -3,7 +3,7 @@
 ## World Weather App allows the user to click on a map of the world to show the clicked location's current weather data.
 
 ## Deployed Link 
-Vew deployed site [here](https://world-weather-webapp.herokuapp.com/)
+View deployed site [here](https://world-weather-webapp.herokuapp.com/)
 
 ## App Demo
 View demo on YouTube [here](https://youtu.be/ubWkpjSDtcM)
